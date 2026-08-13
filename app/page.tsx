@@ -31,6 +31,7 @@ export default function Home() {
 
   const [sending, setSending] = useState(false);
   const [message, setMessage] = useState("");
+  const [copyMessage, setCopyMessage] = useState("");
 
   const [reports, setReports] = useState<Report[]>([]);
   const [loadingReports, setLoadingReports] = useState(true);
@@ -99,6 +100,38 @@ export default function Home() {
 
     setReports((data as Report[]) || []);
     setLoadingReports(false);
+  }
+
+  function shareWhatsApp() {
+    const text =
+      "Unterstütze LogistikOhneLogik – Probleme sichtbar machen, Fahrer zusammenbringen und Lösungen voranbringen.";
+
+    const url = window.location.href;
+
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+      `${text} ${url}`
+    )}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  }
+
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+
+      setCopyMessage("Link kopiert ✓");
+
+      setTimeout(() => {
+        setCopyMessage("");
+      }, 2500);
+    } catch (error) {
+      console.error("Link konnte nicht kopiert werden:", error);
+      setCopyMessage("Kopieren fehlgeschlagen");
+
+      setTimeout(() => {
+        setCopyMessage("");
+      }, 2500);
+    }
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -219,19 +252,15 @@ export default function Home() {
             <a href="#probleme" className="transition hover:text-white">
               Probleme
             </a>
-
             <a href="#stimmen" className="transition hover:text-white">
               Meldungen
             </a>
-
             <a href="#loesungen" className="transition hover:text-white">
               Lösungen
             </a>
-
             <a href="#petition" className="transition hover:text-white">
               Petition
             </a>
-
             <a href="#ueber-uns" className="transition hover:text-white">
               Über uns
             </a>
@@ -568,12 +597,20 @@ export default function Home() {
                 Petition öffnen →
               </a>
 
-              <button className="rounded-md border border-white/15 px-6 py-4 font-bold transition hover:bg-white hover:text-[#0B1F33]">
+              <button
+                type="button"
+                onClick={shareWhatsApp}
+                className="rounded-md border border-white/15 px-6 py-4 font-bold transition hover:bg-white hover:text-[#0B1F33]"
+              >
                 Per WhatsApp teilen
               </button>
 
-              <button className="rounded-md border border-white/15 px-6 py-4 font-bold transition hover:bg-white hover:text-[#0B1F33]">
-                Link kopieren
+              <button
+                type="button"
+                onClick={copyLink}
+                className="rounded-md border border-white/15 px-6 py-4 font-bold transition hover:bg-white hover:text-[#0B1F33]"
+              >
+                {copyMessage || "Link kopieren"}
               </button>
             </div>
           </div>
