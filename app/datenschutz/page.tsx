@@ -30,9 +30,9 @@ export default function Datenschutz() {
             </p>
 
             <p className="mt-4 leading-7">
-              Maurice Leppert
+              Stefan, Mießler
               <br />
-              Dr.-Salvador-Allende-Straße 2
+              Jahnstraße 28, 72213, Altensteig
               <br />
               Deutschland
               <br />
