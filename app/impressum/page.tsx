@@ -39,7 +39,7 @@ export default function Impressum() {
                 href="mailto:maurice.leppert@web.de"
                 className="text-[#F26A21] hover:underline"
               >
-                maurice.leppert@web.de
+                kontakt.LogOLog@gmail.com
               </a>
             </p>
           </section>
