@@ -20,9 +20,9 @@ export default function Impressum() {
             </h2>
 
             <p className="mt-4 leading-7">
-              Stefan, Mießler
+              Maurice, Leppert
               <br />
-              Jahnstraße 28, 72213, Altensteig
+              Dr.Salvador-Allende Straße 2, 99425, Weimar
               <br />
               Deutschland
             </p>
@@ -50,7 +50,7 @@ export default function Impressum() {
             </h2>
 
             <p className="mt-4 leading-7">
-              Stefan Mießler
+              Maurice Leppert
               <br />
               Anschrift wie oben
             </p>
